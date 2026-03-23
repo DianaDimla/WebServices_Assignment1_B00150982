@@ -5,32 +5,32 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t inventory-api .'
+                sh 'docker build -t inventory-api .'
             }
         }
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 8000:8000 --name inventory-container inventory-api'
+                sh 'docker run -d -p 8000:8000 --name inventory-container inventory-api'
             }
         }
 
         stage('Run API Tests') {
             steps {
-                bat 'newman run tests/collection.json'
+                sh 'newman run tests/collection.json'
             }
         }
 
         stage('Stop Container') {
             steps {
-                bat 'docker stop inventory-container'
-                bat 'docker rm inventory-container'
+                sh 'docker stop inventory-container'
+                sh 'docker rm inventory-container'
             }
         }
 
         stage('Create ZIP File') {
             steps {
-                bat 'powershell Compress-Archive -Path * -DestinationPath complete.zip'
+                sh 'zip -r complete-$(date +%Y%m%d-%H%M%S).zip .'
             }
         }
     }

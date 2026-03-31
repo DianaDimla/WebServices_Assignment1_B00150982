@@ -42,7 +42,7 @@
           "raw": "{{base_url}}/getAll",
           "host": ["{{base_url}}"],
           "path": ["getAll"]
-      }
+        }
       },
       "response": []
     },
@@ -69,7 +69,13 @@
         "url": {
           "raw": "{{base_url}}/getSingleProduct?id=1001",
           "host": ["{{base_url}}"],
-          "path": ["getSingleProduct"]
+          "path": ["getSingleProduct"],
+          "query": [
+            {
+              "key": "id",
+              "value": "1001"
+            }
+          ]
         }
       },
       "response": []
@@ -132,13 +138,13 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{base_url}}/deleteOne?id=999",
+          "raw": "{{base_url}}/deleteOne?id=1003",
           "host": ["{{base_url}}"],
           "path": ["deleteOne"],
           "query": [
             {
               "key": "id",
-              "value": "999"
+              "value": "1003"
             }
           ]
         }
